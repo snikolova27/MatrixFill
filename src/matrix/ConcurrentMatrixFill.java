@@ -4,7 +4,6 @@ import utils.Utils;
 
 import java.util.Calendar;
 import java.util.Random;
-import java.util.concurrent.Executor;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
@@ -141,7 +140,7 @@ public class ConcurrentMatrixFill {
     }
 
     private void generateNewNumbers() {
-        this.numsToFillWith = IntStream.generate(() -> new Random().nextInt(90) + 27).limit(this.countOfThreads).toArray();
+        this.numsToFillWith = IntStream.generate(() -> new Random().nextInt(90) + 23).limit(this.countOfThreads).toArray();
     }
 
     public String printGeneratedRandomNumbers() {

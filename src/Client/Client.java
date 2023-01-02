@@ -1,28 +1,16 @@
 package Client;
 
-import Server.Server;
-import utils.Utils;
-
 import java.io.*;
 import java.net.InetSocketAddress;
-import java.net.Socket;
-import java.net.UnknownHostException;
 import java.nio.ByteBuffer;
 import java.nio.channels.SocketChannel;
 import java.nio.charset.StandardCharsets;
-import java.security.PrivateKey;
 import java.util.Scanner;
-
 import static utils.Utils.*;
 
 public class Client {
-    //    private DataInputStream input = null;
-//    private DataOutputStream output = null;
-//    private Socket socket;
-//    private final String address;
-//    private final int port;
     private static final int BUFFER_SIZE = 200000;
-    private static ByteBuffer buffer = ByteBuffer.allocate(BUFFER_SIZE);
+    private static final ByteBuffer buffer = ByteBuffer.allocate(BUFFER_SIZE);
 
     public static void main(String[] args) {
         try (SocketChannel socketChannel = SocketChannel.open();

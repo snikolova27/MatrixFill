@@ -1,28 +1,18 @@
 package Server;
 
 import matrix.ConcurrentMatrixFill;
-import utils.Utils;
-
 import java.io.*;
 import java.net.InetSocketAddress;
-import java.net.ServerSocket;
-import java.net.Socket;
-import java.nio.Buffer;
 import java.nio.ByteBuffer;
 import java.nio.channels.SelectionKey;
 import java.nio.channels.Selector;
 import java.nio.channels.ServerSocketChannel;
 import java.nio.channels.SocketChannel;
-import java.nio.charset.StandardCharsets;
 import java.util.Iterator;
 
 import static utils.Utils.*;
 
 public class Server {
-    //    private Socket socket = null;
-//    private ServerSocket server = null;
-//    private DataInputStream input = null;
-//    private DataOutputStream output = null;
     private int countOfThreads;
 
     private ByteBuffer buffer;
