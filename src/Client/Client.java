@@ -24,53 +24,6 @@ public class Client {
     private static final int BUFFER_SIZE = 200000;
     private static ByteBuffer buffer = ByteBuffer.allocate(BUFFER_SIZE);
 
-
-//    public Client(String address, int port) {
-//        this.port = port;
-//        this.address = address;
-//        try {
-//            this.socket = new Socket(this.address, this.port);
-//            System.out.println("Connected");
-//
-//            // чете от терминала
-//            this.input = new DataInputStream(System.in);
-//
-//            // изпраща изхода към сървъра
-//            this.output = new DataOutputStream(socket.getOutputStream());
-//            // чете от сървъра
-//
-//
-//        } catch (UnknownHostException uh) {
-//            System.out.println("Server not found: " + uh.getMessage());
-//        } catch (IOException ioe) {
-//            System.out.println("I/O error: " + ioe.getMessage());
-//        }
-//
-//        // за запазване на съобщението от входа
-//        String currentLine = "";
-//
-//        // четем докато потребителят не напише over
-//        while (!currentLine.equals("over")) {
-//            try {
-//                currentLine = this.input.readLine();
-//                this.output.writeUTF(currentLine);
-//            } catch (IOException e) {
-//                Utils.handleException(e);
-//            }
-//        }
-//
-//
-//        // затваряне на клиента
-//        try {
-//            this.input.close();
-//            this.output.close();
-//            this.socket.close();
-//        } catch (IOException e) {
-//            Utils.handleException(e);
-//        }
-//    }
-//
-
     public static void main(String[] args) {
         try (SocketChannel socketChannel = SocketChannel.open();
              Scanner scanner = new Scanner(System.in)) {
