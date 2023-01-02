@@ -35,7 +35,9 @@ public class ConcurrentMatrixFill {
         finalResult.append(concurrentFill());
         finishParallel = Calendar.getInstance().getTimeInMillis();
         finalResult.append("Time for parallel execution in milliseconds: ").append(finishParallel - startParallel).append("\n");
+        finalResult.append("Matrix: \n");
         finalResult.append(printMatrix());
+        finalResult.append("=================================================================================\n");
         finalResult.append("\n");
 
         // за изминалото време за последователното изпълнение
@@ -50,8 +52,11 @@ public class ConcurrentMatrixFill {
         finalResult.append(linearFill());
         finishLinear = Calendar.getInstance().getTimeInMillis();
         finalResult.append("Time for linear execution in milliseconds: ").append(finishLinear - startLinear).append("\n");
+        finalResult.append("Matrix: \n");
         finalResult.append(printMatrix());
-        System.out.println(finalResult);
+        finalResult.append("=================================================================================\n");
+
+        //  System.out.println(finalResult);
         return String.valueOf(finalResult);
     }
 
@@ -75,7 +80,7 @@ public class ConcurrentMatrixFill {
         for (int i = 0; i < this.countOfThreads; i++) {
             result.append(printRow(i));
         }
-      //  System.out.println(result);
+        //  System.out.println(result);
         return String.valueOf(result);
     }
 
@@ -85,7 +90,7 @@ public class ConcurrentMatrixFill {
         sb.append("Currently filling row " + row + " by thread with id " + threadId + " with number " + this.numsToFillWith[row] + "\n");
 
         fillRow(row);
-       // System.out.println(sb);
+        // System.out.println(sb);
         return String.valueOf(sb);
     }
 
@@ -98,7 +103,8 @@ public class ConcurrentMatrixFill {
 
     public String concurrentFill() throws InterruptedException {
         StringBuilder sb = new StringBuilder();
-        sb.append("Concurrent fill: \n");
+        sb.append("Concurrent fill\n");
+        sb.append("==========================\n");
 
         // използваме AtomicInteger, за да се предпазим от проблеми свързани с паметта и нейната консистентност
         AtomicInteger rowIdx = new AtomicInteger(0);
@@ -118,18 +124,19 @@ public class ConcurrentMatrixFill {
         executorService.awaitTermination(1, TimeUnit.MINUTES);
         sb.append("Matrix fill done. \n");
 
-       // System.out.println(sb);
+        // System.out.println(sb);
         return String.valueOf(sb);
     }
 
     public String linearFill() {
         StringBuilder sb = new StringBuilder();
-        sb.append("Linear fill: \n");
+        sb.append("Linear fill \n");
+        sb.append("==========================\n");
         for (int i = 0; i < this.countOfThreads; i++) {
             fillRow(i);
         }
         sb.append("Matrix fill done. \n");
-       // System.out.println(sb);
+        // System.out.println(sb);
         return String.valueOf(sb);
     }
 
@@ -139,13 +146,12 @@ public class ConcurrentMatrixFill {
 
     public String printGeneratedRandomNumbers() {
         StringBuilder sb = new StringBuilder();
-        System.out.println("Printing the generated numbers to fill the matrix with: ");
+        sb.append("The generated numbers to fill the matrix with: ");
         for (int i = 0; i < this.countOfThreads; i++) {
             sb.append(this.numsToFillWith[i]);
             sb.append(" ");
         }
         sb.append("\n");
-       // System.out.println(sb);
         return String.valueOf(sb);
     }
 }
